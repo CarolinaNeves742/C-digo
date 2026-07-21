@@ -1,0 +1,10 @@
+import json
+import pandas as pd
+
+# Carregar o arquivo JSON
+with open('Appliances.json', 'r', encoding='utf-8') as arquivo:
+    dados = json.load(arquivo)
+
+# Converter para DataFrame e exportar para Excel
+tabela = pd.DataFrame(dados)
+tabela.to_excel('dados_finais.xlsx', index=False)

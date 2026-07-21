@@ -1,0 +1,27 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+# 1. Carregue ou crie seus dados
+dados = pd.DataFrame({
+    'horas_estudo': [2, 3, 5, 7, 8],
+    'aprovado': [0, 0, 1, 1, 1] 
+})
+
+# 2. Separe variáveis (X) e alvo (y)
+X = dados[['horas_estudo']]
+y = dados['aprovado']
+
+# 3. Divida os dados em treino e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 4. Inicialize e treine o modelo
+modelo = LogisticRegression()
+modelo.fit(X_train, y_train)
+
+# 5. Faça previsões (classes) ou preveja probabilidades
+previsoes = modelo.predict(X_test)
+probabilidades = modelo.predict_proba(X_test)
+
+print("Previsões:", previsoes)
+print("Probabilidades:", probabilidades)

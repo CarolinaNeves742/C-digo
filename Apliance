@@ -1,0 +1,25 @@
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.datasets import load_breast_cancer
+
+# 1. Carregar os dados
+dados = load_breast_cancer()
+X, y = dados.data, dados.target
+
+# 2. Dividir os dados em treino e teste (75% treino, 25% teste)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+
+# 3. Inicializar o modelo de Regressão Logística
+modelo = LogisticRegression(max_iter=1000)
+
+# 4. Treinar o modelo
+modelo.fit(X_train, y_train)
+
+# 5. Fazer previsões
+y_pred = modelo.predict(X_test)
+
+# 6. Avaliar o desempenho
+print("Acurácia:", accuracy_score(y_test, y_pred))
+print("\nRelatório de Classificação:\n", classification_report(y_test, y_pred))
+

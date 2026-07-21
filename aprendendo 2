@@ -1,0 +1,6 @@
+import json
+
+file =  "Appliances.jsonl"
+with open(file, 'r') as fp:
+    for line in fp:
+        print(json.loads(line.strip()))
